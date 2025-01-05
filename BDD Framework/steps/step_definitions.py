@@ -10,7 +10,7 @@ from selenium.common.exceptions import StaleElementReferenceException, NoSuchEle
 import time
 
 @given('I am logged into the platform')
-def step_impl(context):
+def step_one(context):
     try:
         # Start Chrome driver
         context.driver = webdriver.Chrome(executable_path="C:/shetty/chromedriver-win32/chromedriver.exe")  # Path to your chromedriver
@@ -53,7 +53,7 @@ def step_impl(context):
         context.driver.save_screenshot('unexpected_error.png')
 
 @when('I navigate to the "Test Automation Project"')
-def step_impl(context):
+def step_two(context):
     try:
         context.driver.implicitly_wait(10)
 
@@ -81,7 +81,7 @@ def step_impl(context):
         context.driver.save_screenshot('unexpected_error_test_automation_project.png')
 
 @when('I switch to the "Details" tab')
-def step_impl(context):
+def step_three(context):
     try:
         # Wait for the details section to be present
         WebDriverWait(context.driver, 20).until(
@@ -114,7 +114,7 @@ def step_impl(context):
         context.driver.save_screenshot('unexpected_error_details_tab.png')
 
 @when('I return to the "Videos" tab')
-def step_impl(context):
+def step_four(context):
     try:
         # Wait for the "Videos" section to be present
         WebDriverWait(context.driver, 20).until(
@@ -147,7 +147,7 @@ def step_impl(context):
         context.driver.save_screenshot('unexpected_error_videos_tab.png')
 
 @when('I play the video')
-def step_impl(context):
+def step_five(context):
     try:
         context.driver.implicitly_wait(5)
 
@@ -213,7 +213,7 @@ def retry_find_element(driver, by, value, retries=3, delay=2):
     raise TimeoutException(f"Element with {by}={value} could not be found after {retries} retries.")
 
 @when('I change the resolution to 480p and then back to 720p')
-def step_impl(context):
+def step_six(context):
     # Start with an action chain for moving by offset
     actions = ActionChains(context.driver)
     actions.move_by_offset(100, 100).perform()
@@ -265,7 +265,7 @@ def step_impl(context):
     print("Test completed successfully.")
 
 @when('I pause the video and exit the project')
-def step_impl(context):
+def step_seven(context):
     try:
         # Wait for the Pause button to be visible and clickable
         pause_button = WebDriverWait(context.driver, 10).until(
